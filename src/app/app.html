@@ -1,26 +1,36 @@
 <div class="d-flex flex-column justify-content-center align-items-center h-100">
   <h1>Jogo de Adivinhação</h1>
 
-  <main
-    class="row-cols-3 d-flex align-items-center bg-danger-subtle rounded text-center p-5 mt-5 gap-3"
-  >
+  <section class="mt-5">
+    <h2>Seleção de Dificuldade</h2>
+    <div class="row justify-content-center gap-2 mt-4">
+      <button (click)="selecionarDificuldade('Fácil')" class="col-3 btn btn-primary">Fácil</button>
+      <button (click)="selecionarDificuldade('Médio')" class="col-3 btn btn-primary">Médio</button>
+      <button (click)="selecionarDificuldade('Difícil')" class="col-3 btn btn-primary">Difícil</button>
+    </div>
+  </section>
+
+  <main class="row-cols-3 d-flex align-items-center bg-danger-subtle rounded text-center p-5 mt-5 gap-3">
     <label class="display-1">{{ dicaNumeroMaiorQue }}></label>
 
     <div class="d-flex flex-column gap-2">
-      <input
-        [(ngModel)]="numeroDigitado"
-        class="display-1 text-center"
-        type="number"
-        min="1"
-        max="100"
-      />
+      <input [(ngModel)]="numeroDigitado" class="display-1 text-center" type="number" min="1" max="100" />
 
-      @if (!jogoEstaFinalizazdo) {
-        <button (click)="adivinhar()" class="btn btn-primary">Adivinhar</button>
-      } @else {
-        <button (click)="reiniciar()" class="btn btn-success">Reiniciar</button>
-      }
+
+      <button [disabled]="!dificuldadeSelecionada || jogoEstaFinalizazdo" (click)="adivinhar()"
+        class="btn btn-primary">Adivinhar</button>
+      <button (click)="reiniciar()" class="btn btn-success">Reiniciar</button>
+
     </div>
-    <label class="display-1"><{{ dicaNumeroMenorQue }}</label>
+    <label class="display-1">
+      <{{ dicaNumeroMenorQue }}</label>
   </main>
+
+  @if(dificuldadeSelecionada){
+  <section class="d-flex justify-content-between gap-2 mt-2">
+    <label class="fs-5">
+      <span class="fw-semibold">Tentativas Restantes: {{ tentativasRestantes}}</span>
+    </label>
+  </section>
+  }
 </div>
