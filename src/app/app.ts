@@ -33,10 +33,10 @@ export class App implements OnInit {
     this.numeroSecreto = this.obterNumeroSecreto(1, 100);
   }
 
-  private obterNumeroSecreto(min: number, max: number){
+  private obterNumeroSecreto(min: number, max: number) {
     const numeroAleatorio: number = Math.random() * 100;
 
-    const numeroSecreto = Math.floor(numeroAleatorio)
+    const numeroSecreto = Math.floor(numeroAleatorio);
 
     return numeroSecreto;
   }
