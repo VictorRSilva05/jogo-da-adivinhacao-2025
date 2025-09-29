@@ -14,7 +14,7 @@
     <label class="display-1">{{ dicaNumeroMaiorQue }}></label>
 
     <div class="d-flex flex-column gap-2">
-      <input [(ngModel)]="numeroDigitado" class="display-1 text-center" type="number" min="1" max="100" />
+      <input [disabled]="!dificuldadeSelecionada || jogoEstaFinalizazdo" [(ngModel)]="numeroDigitado" class="display-1 text-center" type="number" min="1" max="100" />
 
 
       <button [disabled]="!dificuldadeSelecionada || jogoEstaFinalizazdo" (click)="adivinhar()"
@@ -28,6 +28,9 @@
 
   @if(dificuldadeSelecionada){
   <section class="d-flex justify-content-between gap-2 mt-2">
+    <label class="fs-5">
+       <span class="fw-semibold">Pontuaçao: {{pontuacao}}</span>
+    </label>
     <label class="fs-5">
       <span class="fw-semibold">Tentativas Restantes: {{ tentativasRestantes}}</span>
     </label>

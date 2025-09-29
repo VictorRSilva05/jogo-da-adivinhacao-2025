@@ -16,6 +16,7 @@ export class App {
 
   public dificuldadeSelecionada?: string;
   public tentativasRestantes: number = 0;
+  public pontuacao: number = 100;
 
   public selecionarDificuldade(dificuldade: string){
     switch(dificuldade){
@@ -52,6 +53,12 @@ export class App {
     else if (this.numeroDigitado > this.numeroSecreto)
       this.dicaNumeroMenorQue = this.numeroDigitado;
     else this.jogoEstaFinalizazdo = true;
+
+    const diferencaNumerica: number = Math.abs(this.numeroSecreto - this.numeroDigitado);
+
+    if(diferencaNumerica >= 10) this.pontuacao -= 10;
+    else if(diferencaNumerica >= 5) this.pontuacao -= 5;
+    else this.pontuacao -= 2;
   }
 
   public reiniciar() {
@@ -60,6 +67,7 @@ export class App {
     this.dicaNumeroMenorQue = 100;
     this.jogoEstaFinalizazdo = false;
     this.dificuldadeSelecionada = undefined;
+    this.pontuacao = 100;
   }
 
   private obterNumeroSecreto(max: number) {
