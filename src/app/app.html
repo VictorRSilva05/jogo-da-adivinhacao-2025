@@ -14,10 +14,10 @@
     <label class="display-1">{{ dicaNumeroMaiorQue }}></label>
 
     <div class="d-flex flex-column gap-2">
-      <input [disabled]="!dificuldadeSelecionada || jogoEstaFinalizazdo" [(ngModel)]="numeroDigitado" class="display-1 text-center" type="number" min="1" max="100" />
+      <input [disabled]="!dificuldadeSelecionada || jogoEstaFinalizado" [(ngModel)]="numeroDigitado" class="display-1 text-center" type="number" min="1" max="100" />
 
 
-      <button [disabled]="!dificuldadeSelecionada || jogoEstaFinalizazdo" (click)="adivinhar()"
+      <button [disabled]="!dificuldadeSelecionada || jogoEstaFinalizado" (click)="adivinhar()"
         class="btn btn-primary">Adivinhar</button>
       <button (click)="reiniciar()" class="btn btn-success">Reiniciar</button>
 
@@ -36,4 +36,14 @@
     </label>
   </section>
   }
+
+ <section>
+  <h2>🏆 Ranking</h2>
+  <ol>
+    <li *ngFor="let jogador of ranking">
+      {{ jogador.nome }} - {{ jogador.pontos }} pts
+    </li>
+  </ol>
+</section>
+
 </div>
